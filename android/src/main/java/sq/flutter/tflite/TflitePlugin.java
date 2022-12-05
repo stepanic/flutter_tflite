@@ -587,7 +587,7 @@ public class TflitePlugin implements MethodCallHandler {
 
     ByteBuffer imgData = feedInputTensorImage(path, IMAGE_MEAN, IMAGE_STD);
 
-    if (model.equals("SSDMobileNet")) {
+    if (model.equals("SSDMobileNet") || model.equals("CUSTOM")) {
       new RunSSDMobileNet(args, imgData, NUM_RESULTS_PER_CLASS, THRESHOLD, result).executeTfliteTask();
     } else {
       new RunYOLO(args, imgData, BLOCK_SIZE, NUM_BOXES_PER_BLOCK, ANCHORS, THRESHOLD, NUM_RESULTS_PER_CLASS, result).executeTfliteTask();
@@ -606,7 +606,7 @@ public class TflitePlugin implements MethodCallHandler {
 
     ByteBuffer imgData = ByteBuffer.wrap(binary);
 
-    if (model.equals("SSDMobileNet")) {
+    if (model.equals("SSDMobileNet") || model.equals("CUSTOM")) {
       new RunSSDMobileNet(args, imgData, NUM_RESULTS_PER_CLASS, THRESHOLD, result).executeTfliteTask();
     } else {
       new RunYOLO(args, imgData, BLOCK_SIZE, NUM_BOXES_PER_BLOCK, ANCHORS, THRESHOLD, NUM_RESULTS_PER_CLASS, result).executeTfliteTask();
@@ -633,7 +633,7 @@ public class TflitePlugin implements MethodCallHandler {
 
     ByteBuffer imgData = feedInputTensorFrame(bytesList, imageHeight, imageWidth, IMAGE_MEAN, IMAGE_STD, rotation);
 
-    if (model.equals("SSDMobileNet")) {
+    if (model.equals("SSDMobileNet") || model.equals("CUSTOM")) {
       new RunSSDMobileNet(args, imgData, NUM_RESULTS_PER_CLASS, THRESHOLD, result).executeTfliteTask();
     } else {
       new RunYOLO(args, imgData, BLOCK_SIZE, NUM_BOXES_PER_BLOCK, ANCHORS, THRESHOLD, NUM_RESULTS_PER_CLASS, result).executeTfliteTask();

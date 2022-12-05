@@ -762,7 +762,7 @@ void detectObjectOnImage(NSDictionary* args, FlutterResult result) {
       return result(empty);
     }
 
-    if ([model isEqual: @"SSDMobileNet"])
+    if ([model isEqual: @"SSDMobileNet"] || [model isEqual: @"CUSTOM"])
       return result(parseSSDMobileNet(threshold, num_results_per_class));
     else
       return result(parseYOLO((int)labels.size(), anchors, block_size, num_boxes_per_block, num_results_per_class,
@@ -796,7 +796,7 @@ void detectObjectOnBinary(NSDictionary* args, FlutterResult result) {
       return result(empty);
     }
 
-    if ([model isEqual: @"SSDMobileNet"])
+    if ([model isEqual: @"SSDMobileNet"] || [model isEqual: @"CUSTOM"])
       return result(parseSSDMobileNet(threshold, num_results_per_class));
     else
       return result(parseYOLO((int)(labels.size() - 1), anchors, block_size, num_boxes_per_block, num_results_per_class,
@@ -835,7 +835,7 @@ void detectObjectOnFrame(NSDictionary* args, FlutterResult result) {
       return result(empty);
     }
 
-    if ([model isEqual: @"SSDMobileNet"])
+    if ([model isEqual: @"SSDMobileNet"] || [model isEqual: @"CUSTOM"])
       return result(parseSSDMobileNet(threshold, num_results_per_class));
     else
       return result(parseYOLO((int)labels.size(), anchors, block_size, num_boxes_per_block, num_results_per_class,
